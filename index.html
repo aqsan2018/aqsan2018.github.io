@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aqsan2018</title>
+    <title>My Games Hub</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤍</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -190,13 +190,112 @@
             /* --- Updated Active Shadow to Blue --- */
             box-shadow: 0 6px 20px rgba(0, 70, 140, 0.3);
         }
+
+        /* --- NEW Password Lock Styles --- */
+        #password-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5); /* 50% black background */
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            transition: opacity 0.3s ease-out;
+        }
+
+        #lock-box {
+            background-color: #1f1f1f;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        
+        #lock-gif {
+            width: 150px;
+            height: 150px;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        #password-input {
+            font-family: 'Orbitron', sans-serif;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 2px solid #374151;
+            background-color: #121212;
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        #password-input:focus {
+            outline: none;
+            border-color: #3b82f6; /* Blue border on focus */
+        }
+
+        #submit-button {
+            font-family: 'Orbitron', sans-serif;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            background-color: #3b82f6; /* Blue */
+            color: white;
+            font-weight: 700;
+            margin-top: 1rem;
+            transition: background-color 0.2s ease;
+        }
+
+        #submit-button:hover {
+            background-color: #2563eb;
+        }
+
+        #error-message {
+            color: #ef4444; /* Red */
+            font-size: 0.9rem;
+            height: 1.25rem; /* Reserve space */
+            margin-top: 0.75rem;
+        }
+
+        /* Shake animation for wrong password */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+
+        .shake {
+            animation: shake 0.3s ease-in-out;
+        }
+        /* --- End Password Lock Styles --- */
+
     </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen p-4">
 
-    <!-- --- New Heart Rain Container --- --><div id="heart-rain-container"></div>
+    <!-- --- New Heart Rain Container --- -->
+    <div id="heart-rain-container"></div>
 
-    <!-- Countdown Timer --><div id="countdown-container">
+    <!-- --- NEW Password Overlay --- -->
+    <div id="password-overlay">
+        <form id="lock-box">
+            <img id="lock-gif" src="dudu-no-dudu.gif" alt="Dudu Bubu No">
+            <input id="password-input" type="password" placeholder="Enter Password">
+            <p id="error-message"></p>
+            <button id="submit-button" type="submit">Unlock</button>
+        </form>
+    </div>
+
+
+    <!-- Countdown Timer -->
+    <div id="countdown-container">
         <h2 id="countdown-title">Time Together</h2>
         <div id="countdown">
             <div class="time-box">
@@ -222,33 +321,70 @@
         </div>
     </div>
 
-    <!-- Button Grid --><div id="button-grid">
-        <a href="https://aqsan2018.github.io/1/" class="game-button">Questionnaire</a>
-        <a href="https://aqsan2018.github.io/2/" class="game-button">Secret Universe</a>
-        <a href="https://aqsan2018.github.io/3/" class="game-button">Ans Needed</a>
-        <a href="https://aqsan2018.github.io/4/" class="game-button">Find the Matches</a>
-        <a href="https://aqsan2018.github.io/5/" class="game-button">Whack it</a>
-        <a href="https://aqsan2018.github.io/6/" class="game-button">Scratch and Reveal</a>
-        <a href="https://aqsan2018.github.io/7/" class="game-button">Kiss Filler</a>
+    <!-- Button Grid -->
+    <div id="button-grid">
+        <!-- --- UPDATED Links to open in new tab --- -->
+        <a href="https://aqsan2018.github.io/1/" class="game-button" target="_blank" rel="noopener noreferrer">Questionnaire</a>
+        <a href="https://aqsan2018.github.io/2/" class="game-button" target="_blank" rel="noopener noreferrer">Secret Universe</a>
+        <a href="https://aqsan2018.github.io/3/" class="game-button" target="_blank" rel="noopener noreferrer">Ans Needed</a>
+        <a href="https://aqsan2018.github.io/4/" class="game-button" target="_blank" rel="noopener noreferrer">Find the Matches</a>
+        <a href="https://aqsan2018.github.io/5/" class="game-button" target="_blank" rel="noopener noreferrer">Whack it</a>
+        <a href="https://aqsan2018.github.io/6/" class="game-button" target="_blank" rel="noopener noreferrer">Scratch and Reveal</a>
+        <a href="https://aqsan2018.github.io/7/" class="game-button" target="_blank" rel="noopener noreferrer">Kiss Filler</a>
     </div>
 
     <script>
-        // Set the date we're counting from
+        // --- NEW Password Lock Script ---
+        const passwordOverlay = document.getElementById('password-overlay');
+        const lockBox = document.getElementById('lock-box');
+        const passwordInput = document.getElementById('password-input');
+        const errorMessage = document.getElementById('error-message');
+        const correctPassword = "28072018";
+
+        // Check if already unlocked in this session
+        if (sessionStorage.getItem('isUnlocked') === 'true') {
+            passwordOverlay.style.display = 'none';
+        }
+
+        lockBox.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const enteredPassword = passwordInput.value;
+
+            if (enteredPassword === correctPassword) {
+                // Correct password
+                sessionStorage.setItem('isUnlocked', 'true');
+                passwordOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    passwordOverlay.style.display = 'none';
+                }, 300); // Wait for fade out
+            } else {
+                // Wrong password
+                errorMessage.textContent = 'Wrong Password. Try Again!';
+                lockBox.classList.add('shake');
+                passwordInput.value = '';
+
+                // Remove shake animation so it can be re-added
+                setTimeout(() => {
+                    lockBox.classList.remove('shake');
+                    errorMessage.textContent = ''; // Clear error message
+                }, 1000);
+            }
+        });
+        // --- End Password Lock Script ---
+
+
+        // --- Countdown Timer Script ---
         const startDate = new Date("2018-07-28T00:00:00").getTime();
 
         function updateCountdown() {
-            // Get today's date and time
             const now = new Date().getTime();
-            
-            // Find the distance between now and the start date
             const distance = now - startDate;
             
-            // Time calculations for years, days, hours, minutes and seconds
             const msPerSecond = 1000;
             const msPerMinute = msPerSecond * 60;
             const msPerHour = msPerMinute * 60;
             const msPerDay = msPerHour * 24;
-            const msPerYear = msPerDay * 365.25; // Account for leap years
+            const msPerYear = msPerDay * 365.25;
 
             const years = Math.floor(distance / msPerYear);
             const days = Math.floor((distance % msPerYear) / msPerDay);
@@ -256,43 +392,38 @@
             const minutes = Math.floor((distance % msPerHour) / msPerMinute);
             const seconds = Math.floor((distance % msPerMinute) / msPerSecond);
             
-            // Display the result
             document.getElementById("years").innerText = years;
             document.getElementById("days").innerText = days;
             document.getElementById("hours").innerText = hours;
             document.getElementById("minutes").innerText = minutes;
             document.getElementById("seconds").innerText = seconds;
         }
-
-        // Update the countdown every 1 second
         setInterval(updateCountdown, 1000);
-
-        // Run it once immediately to avoid delay
         updateCountdown();
+        // --- End Countdown Timer Script ---
+
 
         // --- New Heart Rain Script ---
         const rainContainer = document.getElementById('heart-rain-container');
 
         function createHeart() {
             const heart = document.createElement('div');
-            heart.innerHTML = '♥'; // Using the '♥' character which can be colored
+            heart.innerHTML = '♥';
             heart.className = 'heart';
             
             heart.style.left = `${Math.random() * 100}vw`;
-            heart.style.animationDuration = `${Math.random() * 2 + 3}s`; // 3-5 second fall
-            heart.style.opacity = Math.random() * 0.6 + 0.4; // Slightly more opaque
-            heart.style.fontSize = `${Math.random() * 1.5 + 1}rem`; // 1rem to 2.5rem size
+            heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
+            heart.style.opacity = Math.random() * 0.6 + 0.4;
+            heart.style.fontSize = `${Math.random() * 1.5 + 1}rem`;
             
             rainContainer.appendChild(heart);
 
-            // Remove the heart after it falls
             setTimeout(() => {
                 heart.remove();
             }, 5000);
         }
-
-        // Create a new heart every 150ms (more frequent)
         setInterval(createHeart, 150);
+        // --- End Heart Rain Script ---
     </script>
 
 </body>
