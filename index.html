@@ -12,7 +12,8 @@
             font-family: 'Roboto', sans-serif;
             background-color: #121212;
             color: #ffffff;
-            overflow: hidden; /* Prevent scrollbars from rain */
+            /* overflow: hidden; <-- REMOVED this line */
+            min-height: 100vh; /* Ensure body takes at least full height */
         }
 
         /* --- New Heart Rain Styles --- */
@@ -91,7 +92,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         /* --- Updated Pulse Animation for MORE INTENSITY --- */
         @keyframes subtle-pulse {
             0% {
@@ -151,7 +152,7 @@
             z-index: 1;
             animation: subtle-pulse 2s infinite ease-in-out;
         }
-        
+
         /* --- Staggered animation delays --- */
         .game-button:nth-child(1) { animation-delay: 0.0s; }
         .game-button:nth-child(2) { animation-delay: 0.2s; }
@@ -177,7 +178,7 @@
         .game-button:hover {
             transform: translateY(-5px) scale(1.03);
             /* --- Updated Hover Shadow to Blue --- */
-            box-shadow: 0 10px 25px rgba(0, 100, 200, 0.5); 
+            box-shadow: 0 10px 25px rgba(0, 100, 200, 0.5);
             animation-play-state: paused;
         }
 
@@ -214,8 +215,14 @@
             border-radius: 1rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             text-align: center;
+            width: 90%; /* Responsive width */
+            max-width: 320px; /* Max width matching previous examples */
+            display: flex; /* Flex to center items inside */
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
         }
-        
+
         #lock-gif {
             width: 150px;
             height: 150px;
@@ -236,6 +243,7 @@
             font-size: 1.1rem;
             text-align: center;
             letter-spacing: 2px;
+            box-sizing: border-box;
         }
 
         #password-input:focus {
@@ -253,6 +261,9 @@
             font-weight: 700;
             margin-top: 1rem;
             transition: background-color 0.2s ease;
+            border: none; /* Added */
+            cursor: pointer; /* Added */
+            box-sizing: border-box;
         }
 
         #submit-button:hover {
@@ -280,7 +291,7 @@
 
     </style>
 </head>
-<body class="bg-gray-900 text-white min-h-screen p-4">
+<body > <!-- Removed class="bg-gray-900 text-white min-h-screen p-4" - applied to body directly -->
 
     <!-- --- New Heart Rain Container --- -->
     <div id="heart-rain-container"></div>
@@ -381,7 +392,7 @@
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = now - startDate;
-            
+
             const msPerSecond = 1000;
             const msPerMinute = msPerSecond * 60;
             const msPerHour = msPerMinute * 60;
@@ -393,7 +404,7 @@
             const hours = Math.floor((distance % msPerDay) / msPerHour);
             const minutes = Math.floor((distance % msPerHour) / msPerMinute);
             const seconds = Math.floor((distance % msPerMinute) / msPerSecond);
-            
+
             document.getElementById("years").innerText = years;
             document.getElementById("days").innerText = days;
             document.getElementById("hours").innerText = hours;
@@ -412,12 +423,12 @@
             const heart = document.createElement('div');
             heart.innerHTML = '♥';
             heart.className = 'heart';
-            
+
             heart.style.left = `${Math.random() * 100}vw`;
             heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
             heart.style.opacity = Math.random() * 0.6 + 0.4;
             heart.style.fontSize = `${Math.random() * 1.5 + 1}rem`;
-            
+
             rainContainer.appendChild(heart);
 
             setTimeout(() => {
@@ -430,5 +441,4 @@
 
 </body>
 </html>
-
 
