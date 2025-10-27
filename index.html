@@ -84,20 +84,24 @@
             font-weight: 700;
             font-size: 1.1rem;
             color: #ffffff;
-            background: linear-gradient(145deg, #ec4899, #d946ef);
+            /* --- Updated Background --- */
+            background: #374151; /* Dark Grey */
             border: none;
             padding: 1.5rem 2rem;
             border-radius: 0.75rem;
             text-align: center;
             text-decoration: none;
             display: block;
-            box-shadow: 0 5px 15px rgba(236, 72, 153, 0.3);
-            transition: all 0.3s ease;
+            /* --- Updated Box Shadow & Transition --- */
+            box-shadow: 0 5px 15px rgba(150, 150, 150, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
             z-index: 1;
+            /* --- Removed the 'pulse' animation --- */
         }
-
+        
+        /* --- Re-added the ::before shimmer animation --- */
         .game-button::before {
             content: '';
             position: absolute;
@@ -111,17 +115,21 @@
         }
 
         .game-button:hover {
+            /* --- Updated Hover Effect --- */
             transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 10px 25px rgba(236, 72, 153, 0.5);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+            /* --- Removed animation-play-state --- */
         }
 
+        /* --- Re-added the :hover::before rule for shimmer --- */
         .game-button:hover::before {
             left: 100%;
         }
 
         .game-button:active {
             transform: translateY(-2px) scale(1.01);
-            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+            /* --- Updated Active Shadow --- */
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
@@ -162,7 +170,7 @@
         <a href="https://aqsan2018.github.io/4/" class="game-button">Find the Matches</a>
         <a href="https://aqsan2018.github.io/5/" class="game-button">Whack it</a>
         <a href="https://aqsan2018.github.io/6/" class="game-button">Scratch and Reveal</a>
-        <a href="https://aqsan2018.github.io/7/" class="game-button">Kiss Filler</a>
+        <a href="https://aqsan2018..github.io/7/" class="game-button">Kiss Filler</a>
     </div>
 
     <script>
