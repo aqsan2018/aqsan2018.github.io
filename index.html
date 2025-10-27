@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Games Hub</title>
+    <title>AQSAN2018</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -43,9 +43,11 @@
             display: block;
             font-size: 2.5rem;
             font-weight: 700;
-            color: #ec4899; /* Pink */
+            /* --- Updated Color --- */
+            color: #ffffff; /* White */
             line-height: 1;
-            text-shadow: 0 0 10px #ec4899;
+            /* --- Updated Shadow --- */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* White glow */
         }
         .time-box p {
             font-size: 0.8rem;
@@ -53,6 +55,19 @@
             margin-top: 0.5rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+        
+        /* --- New Pulse Animation --- */
+        @keyframes subtle-pulse {
+            0% {
+                box-shadow: 0 5px 15px rgba(150, 150, 150, 0.2);
+            }
+            50% {
+                box-shadow: 0 8px 25px rgba(200, 200, 200, 0.3);
+            }
+            100% {
+                box-shadow: 0 5px 15px rgba(150, 150, 150, 0.2);
+            }
         }
 
         /* Button Grid Styles */
@@ -84,7 +99,6 @@
             font-weight: 700;
             font-size: 1.1rem;
             color: #ffffff;
-            /* --- Updated Background --- */
             background: #374151; /* Dark Grey */
             border: none;
             padding: 1.5rem 2rem;
@@ -92,16 +106,25 @@
             text-align: center;
             text-decoration: none;
             display: block;
-            /* --- Updated Box Shadow & Transition --- */
             box-shadow: 0 5px 15px rgba(150, 150, 150, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
             z-index: 1;
-            /* --- Removed the 'pulse' animation --- */
+            /* --- Added new pulse animation --- */
+            animation: subtle-pulse 2s infinite ease-in-out;
         }
         
-        /* --- Re-added the ::before shimmer animation --- */
+        /* --- Staggered animation delays --- */
+        .game-button:nth-child(1) { animation-delay: 0.0s; }
+        .game-button:nth-child(2) { animation-delay: 0.2s; }
+        .game-button:nth-child(3) { animation-delay: 0.4s; }
+        .game-button:nth-child(4) { animation-delay: 0.6s; }
+        .game-button:nth-child(5) { animation-delay: 0.8s; }
+        .game-button:nth-child(6) { animation-delay: 1.0s; }
+        .game-button:nth-child(7) { animation-delay: 1.2s; }
+
+
         .game-button::before {
             content: '';
             position: absolute;
@@ -115,20 +138,18 @@
         }
 
         .game-button:hover {
-            /* --- Updated Hover Effect --- */
             transform: translateY(-5px) scale(1.03);
             box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
-            /* --- Removed animation-play-state --- */
+            /* --- Pause the pulse on hover --- */
+            animation-play-state: paused;
         }
 
-        /* --- Re-added the :hover::before rule for shimmer --- */
         .game-button:hover::before {
             left: 100%;
         }
 
         .game-button:active {
             transform: translateY(-2px) scale(1.01);
-            /* --- Updated Active Shadow --- */
             box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
         }
     </style>
@@ -170,7 +191,7 @@
         <a href="https://aqsan2018.github.io/4/" class="game-button">Find the Matches</a>
         <a href="https://aqsan2018.github.io/5/" class="game-button">Whack it</a>
         <a href="https://aqsan2018.github.io/6/" class="game-button">Scratch and Reveal</a>
-        <a href="https://aqsan2018..github.io/7/" class="game-button">Kiss Filler</a>
+        <a href="https://aqsan2018.github.io/7/" class="game-button">Kiss Filler</a>
     </div>
 
     <script>
