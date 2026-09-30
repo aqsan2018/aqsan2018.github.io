@@ -614,7 +614,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const startDate = new Date("2018-07-28T00:00:00").getTime();
   function updateCountdown() {
     const now = Date.now();
-    const distance = now - startDate;
+    const stopDate = new Date("2026-10-03T00:00:00").getTime();
+    const distance = Math.min(now, stopDate) - startDate;
     const msPerSecond = 1000, msPerMinute = 60000, msPerHour = 3600000, msPerDay = 86400000, msPerYear = msPerDay * 365.25;
     document.getElementById("years").innerText   = Math.floor(distance / msPerYear);
     document.getElementById("days").innerText    = Math.floor((distance % msPerYear) / msPerDay);
